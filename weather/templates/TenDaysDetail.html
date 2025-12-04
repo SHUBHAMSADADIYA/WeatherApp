@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1392ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        display: ["Inter"],
+                    },
+                    borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        .dark body {
+            background: #000000;
+        }
+
+        .light body {
+            background: linear-gradient(to bottom right, #87CEEB, #E0F7FA, #FFFFFF);
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glassmorphism {
+            background: rgba(255, 255, 255, 0.05);
+            border-width: 1.5px;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="font-display text-slate-800 dark:text-slate-200 bg-background-dark bg-cover bg-fixed"
+    style="background-size: 200% 200%;">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="flex h-full grow flex-col">
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-slate-200/10 px-10 py-4 backdrop-blur-sm bg-black/50 fixed top-0 left-0 right-0 z-50">
+                <div class="flex items-center gap-8">
+                    {% include 'navbar.html' %}
+                </div>
+            </header>
+            <main class="flex-1 px-4 sm:px-6 lg:px-8 py-24">
+                <div class="mx-auto max-w-7xl">
+                    <div class="mb-8">
+                        <h1 class="text-4xl font-bold tracking-tight text-white">10-Day Forecast</h1>
+                        <p class="mt-2 text-lg text-slate-400">A look at the weather for the upcoming 10 days.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Today</p>
+                                    <p class="text-lg font-bold text-white">Monday, Jun 10</p>
+                                    <p class="text-sm text-slate-400">High 25°C / Low 15°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpP51E9GBfCmjdKLW6NsNikGU4nxvmP1_8nGYPEwDA-1qgshQQFPFQABOflas3dFoj8Zpc31A-uSqtjYyOHuAde8W6asRNxCfOYrNCLuniPMzI9hzfLSbGD6jfcJz_VY6N8CqPYVx1k2sYSW_rbKwAW3kKeM0ANbqCuiktivM1IfPKJHXTDkRKVl32WxJ8o-AimVn4Y6aR00rRsQ-7azfE0YEhwQJs0wzOS_F_dTAQPrr5Anz4o99OYHww6L6_9OYFdEzbSueZ5gi0");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">20% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 10 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Tomorrow</p>
+                                    <p class="text-lg font-bold text-white">Tuesday, Jun 11</p>
+                                    <p class="text-sm text-slate-400">High 27°C / Low 17°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbNBB1BDpHVU8hjV_iCPqHBvnJE45DcRNkRchng8GxQFV1w_G6dAYie05RDOinr_ccKSVEOWo2xIrjdQ4bamM_H83eI5f-yAiM8_ohCon3Ni2JwemC6mp7UNJIZlZHGbOtAtr42u5X_nwdA7t5k94x8l09SxdQz4e7Q6JZv4powBAevN5-oXGsWV9iK5Soe4l6toS12VdVAlqzl1fkLLiykSDWzyCRl6ftyIYyuCr6QElzhnm6Y8MA7PKUXLVL7cVXRbAClkIl-13m");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">10% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 12 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Wednesday</p>
+                                    <p class="text-lg font-bold text-white">June 12</p>
+                                    <p class="text-sm text-slate-400">High 26°C / Low 16°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6yjgNHRg12MbQMdExQ2kCiga4cWHu4_bYT3KKsJfoHnh5xIDwZG_0QVylrO8MTZ6eyUzx-CS99tptEc0iIIqw6p263myVTYtgDdmL_oFYbNfoKOBn_1QQAxF1erAc83bKKuILjjmqKQlWY_VMsz14-USHNWsSs3KUZLKk71Ied8SWxuQWYEwlsSefac41DRL6j9KYCRanCPskuF0RqU25DnNJiAGUU3tbvpK_wxyhUk7x92pfAJDPPxN7Ndyp3Qp-3hZRg7FuIj8i");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">30% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 15 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Thursday</p>
+                                    <p class="text-lg font-bold text-white">June 13</p>
+                                    <p class="text-sm text-slate-400">High 24°C / Low 14°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxQxe0cBc49kzLaX6ShzMBMF0dCPxVoYYkU6BuoSn9TctrZFwhh5MoGwRCe2NTcY3zioUoRcg_Nf9urYABSfRVThz4qJWKnsPb_j0H9sDw2Yh71d4QyNgG3tyW54R_lZ8-qK1HpyGShBwdwqYWcscT9IYyvFJvqaCQ3dBJvzG-podZGWJwEK4eVNJYrENqsm9QYbsmaua2f_EsMp1BD_oFDampIpKUacbl4gOWieaJaCrcT1MEQlgRBIE1bnqJPktJAybkZC6skcf4");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">60% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 20 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Friday</p>
+                                    <p class="text-lg font-bold text-white">June 14</p>
+                                    <p class="text-sm text-slate-400">High 23°C / Low 13°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBAR8p9_U-hqmjOBKK4Tib0N13Bzwc5biXgQafFwgNsLUvwyDPzZQYJ8nFmkdxT4wzSbifZ_nwgbozlOR-_PtwaiBJ8XRm90QGY70XWqFQeRgQmXhnCF46Ks0qMhmGWBkWwfCZyg9QTx6KCKytWLl3wZYA8AeiseSINI2rubhOyGP9Fm86LpZno3vrH6rf5_8C_HQ4Yh_9E-HbteWbqpxPIZhHo_glDKMcwIansW88Tq0j4STe0SHlbws5ar47q2dvP89BCUJmTzNmo");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">10% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 8 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Saturday</p>
+                                    <p class="text-lg font-bold text-white">June 15</p>
+                                    <p class="text-sm text-slate-400">High 26°C / Low 16°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbk0Rjh0WjXZ2_UGl7em5jbGh-6d2RT5H4WgWvHwIb8yHZJeqwEzLLlbYykl9ImGfaERA4BPTZuETaAkAqO7QgzzpcTu80rzxbV692zsCEZyipnzVGm3ODefK0IYEhsVHMp4BM8WiN4tFN2L9yIgSDMWZmEq1s4_bygUBPX8RDyB34pnaos0ADXHKUvXT8otqxv4pA3jhKkG79HaZHBU144_nX24oF3miXMdyT3IwgXsQ1NMwWvBl6ZzJ1svU4c1Ml82RlF9ZW35SY");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">20% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 11 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Sunday</p>
+                                    <p class="text-lg font-bold text-white">June 16</p>
+                                    <p class="text-sm text-slate-400">High 28°C / Low 18°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWODa0J-HgOb40C7OdhK1CSLHH7UEnd6LtrfLyB34zeaQ4hw0v_4ju8Ek62P6DQX_LMDzVmZvoQLXiVMgEmpkS2Lumahk0n2I4SYLg8d85Q7zbX355J7X8lOnWjH7os-5dIGYyB8SoMmxou1WoR2wrKXFW6rRVe1LgSWfgRwkfD6PJpPLRORe9hEduc9IaEkwhiQB4Zhlzea_GTgK4O02Ujb8ABjp2EW9tA-DAYkRXPWAti9fHHeLHs3ijvtt1r-l131A2K_JY6bnd");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">5% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 9 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Monday</p>
+                                    <p class="text-lg font-bold text-white">June 17</p>
+                                    <p class="text-sm text-slate-400">High 29°C / Low 19°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpP51E9GBfCmjdKLW6NsNikGU4nxvmP1_8nGYPEwDA-1qgshQQFPFQABOflas3dFoj8Zpc31A-uSqtjYyOHuAde8W6asRNxCfOYrNCLuniPMzI9hzfLSbGD6jfcJz_VY6N8CqPYVx1k2sYSW_rbKwAW3kKeM0ANbqCuiktivM1IfPKJHXTDkRKVl32WxJ8o-AimVn4Y6aR00rRsQ-7azfE0YEhwQJs0wzOS_F_dTAQPrr5Anz4o99OYHww6L6_9OYFdEzbSueZ5gi0");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">5% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 10 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Tuesday</p>
+                                    <p class="text-lg font-bold text-white">June 18</p>
+                                    <p class="text-sm text-slate-400">High 30°C / Low 20°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbNBB1BDpHVU8hjV_iCPqHBvnJE45DcRNkRchng8GxQFV1w_G6dAYie05RDOinr_ccKSVEOWo2xIrjdQ4bamM_H83eI5f-yAiM8_ohCon3Ni2JwemC6mp7UNJIZlZHGbOtAtr42u5X_nwdA7t5k94x8l09SxdQz4e7Q6JZv4powBAevN5-oXGsWV9iK5Soe4l6toS12VdVAlqzl1fkLLiykSDWzyCRl6ftyIYyuCr6QElzhnm6Y8MA7PKUXLVL7cVXRbAClkIl-13m");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">10% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 12 km/h</div>
+                        </div>
+                        <div
+                            class="group relative rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 glassmorphism border border-slate-200/20">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-semibold text-slate-200">Wednesday</p>
+                                    <p class="text-lg font-bold text-white">June 19</p>
+                                    <p class="text-sm text-slate-400">High 28°C / Low 18°C</p>
+                                </div>
+                                <div class="w-16 h-16 bg-center bg-no-repeat bg-cover rounded-lg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6yjgNHRg12MbQMdExQ2kCiga4cWHu4_bYT3KKsJfoHnh5xIDwZG_0QVylrO8MTZ6eyUzx-CS99tptEc0iIIqw6p263myVTYtgDdmL_oFYbNfoKOBn_1QQAxF1erAc83bKKuILjjmqKQlWY_VMsz14-USHNWsSs3KUZLKk71Ied8SWxuQWYEwlsSefac41DRL6j9KYCRanCPskuF0RqU25DnNJiAGUU3tbvpK_wxyhUk7x92pfAJDPPxN7Ndyp3Qp-3hZRg7FuIj8i");'>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-lg">water_drop</span>
+                                <span class="text-sm font-medium text-slate-300">15% precipitation</span>
+                            </div>
+                            <div
+                                class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs text-slate-400">
+                                Wind: 14 km/h</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

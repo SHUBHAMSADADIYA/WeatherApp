@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>WeatherWise Map</title>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1392ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
+                    animation: {
+                        'gradient-bg': 'gradient-bg 15s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-bg': {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glassmorphism {
+            background: rgba(26, 26, 26, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dynamic-gradient {
+            background-size: 400% 400%;
+        }
+
+        .bg-light-gradient {
+            background-image: linear-gradient(-45deg, #e0f2fe, #f0f9ff, #f0f0f8);
+        }
+
+        .dark .bg-dark-gradient {
+            background-image: linear-gradient(-45deg, #000000, #000000, #000000);
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display text-[#f6f7f8]">
+    <div class="flex flex-col min-h-screen bg-transparent">
+        <header class="bg-background-dark/50 backdrop-blur-sm sticky top-0 z-50">
+            <div class="container mx-auto px-6 py-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-8">
+                        {% include 'navbar.html' %}
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="relative">
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="h-5 w-5 text-white/40" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+                                </svg>
+                            </div>
+                            <input class="w-40 max-w-xs rounded-lg border-none bg-white/10 py-2 pl-10 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search" type="search"/>
+                        </div>
+                        <div class="h-10 w-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChntnKCMRp22tezQ9zi3scvvS6-1L4N9CRBzeAJEVI6wOqbKTfikLngGRWc0x6WygnrKkTafeUzvz7W2WMiPy55epg7OzQ5q7Ba9MoCJaaQJOyk3W6owv3IsqDWxeDXWkv60ub_jiBuXFgeZQl1M-RpKo6iUpvXC6J9nERhZ6Rt_GAprajrL7COva_0G3iUT7Cra__4CS9zgcaOVPvMfuhsiqJAPr0C0ggXljBY4vNqfZ3fhg_nqLpNCNIOXfStTBunQuRKwI6sXkZ");'></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 container mx-auto px-6 py-8">
+            <div
+                class="relative w-full h-[75vh] rounded-xl overflow-hidden shadow-lg shadow-black/10 border-2 border-gray-800">
+                <div class="absolute inset-0 bg-cover bg-center"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9RVlyf3GuNccYdGQdEvbEoexF8PFKf98JzCT106NUYjzTsg0mzugMQB_DgKoir1VgQEbfhD49QwyTZpHkZBKhwFmRiGi0z8oCo3h2AmsK5_wNfhvk6B3KfeaEl5klFdi2QBFliu1vSAYBcZIpCXTkgcP-hNgaPaHzSiJRBKWXDU5BfNWA4kQWWLal6YKAPxoSPIlnQTLYILuzxAEy40YRn-YgeloNvmF4DEcbsXWOGrHYUiba438qcpB88_bMoOZ9UISeKZfEVu1J');">
+                </div>
+                <div class="absolute top-4 left-4 p-2 rounded-lg bg-black/30 backdrop-blur-md border border-gray-700">
+                    <div class="flex flex-col gap-2">
+                        <button
+                            class="size-10 flex items-center justify-center rounded bg-primary text-white border-2 border-transparent hover:border-blue-400 transition-colors">
+                            <span class="material-symbols-outlined">add</span>
+                        </button>
+                        <button
+                            class="size-10 flex items-center justify-center rounded bg-white/10 text-white border-2 border-transparent hover:border-gray-500 transition-colors">
+                            <span class="material-symbols-outlined">remove</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 w-full max-w-4xl px-4">
+                    <div
+                        class="p-4 rounded-lg bg-black/30 backdrop-blur-md flex items-center justify-between gap-4 border border-gray-700">
+                        <div class="flex items-center gap-4">
+                            <button
+                                class="flex items-center justify-center size-10 rounded-full bg-primary/20 hover:bg-primary/30 transition border-2 border-transparent hover:border-blue-400">
+                                <span class="material-symbols-outlined text-primary">play_arrow</span>
+                            </button>
+                            <div class="text-sm font-medium text-white">
+                                <p>Monday</p>
+                                <p class="text-xs text-white/70">10:00 AM</p>
+                            </div>
+                        </div>
+                        <div class="flex-1 mx-4">
+                            <div class="w-full h-1.5 bg-white/20 rounded-full">
+                                <div class="h-1.5 bg-primary rounded-full" style="width: 25%;"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2">
+                                <input checked=""
+                                    class="form-checkbox rounded text-primary focus:ring-primary/50 bg-black/40 border-gray-600"
+                                    id="rain" type="checkbox" />
+                                <label class="text-sm font-medium text-white" for="rain">Rain</label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input
+                                    class="form-checkbox rounded text-primary focus:ring-primary/50 bg-black/40 border-gray-600"
+                                    id="clouds" type="checkbox" />
+                                <label class="text-sm font-medium text-white" for="clouds">Clouds</label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input checked=""
+                                    class="form-checkbox rounded text-primary focus:ring-primary/50 bg-black/40 border-gray-600"
+                                    id="wind" type="checkbox" />
+                                <label class="text-sm font-medium text-white" for="wind">Wind</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

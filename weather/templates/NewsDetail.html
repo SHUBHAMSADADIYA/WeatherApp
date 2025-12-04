@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1392ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        display: ["Newsreader"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Newsreader%3Awght%40400%3B500%3B700%3B800&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+        onload="this.rel='stylesheet'" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-gray-200/50 dark:border-gray-700/50 px-10 py-3 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-10">
+            <div class="flex items-center gap-8">
+                {% include 'navbar.html' %}
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBk2LiptGEp_PDpO3VO6jqgkgbNqAycyN-QhE_Elc52dzSeFfKh7KLwPrvAMepBkyevk4QxBZgI83Inn9xZAzGUmjIrw3vY42uaZq5pfihEE7FhU0iUGYQBeU5YZ3ATxw5knTBCUwdxfvRq8aq_x09w8yBeH01aUk_LUuvRJj79Fu0-Ltyma8o_EQZrzSEr-p54JAzIh47DATKHYrxrO6ItWA1W_mz2tPNSl2RdpKUJHUN-RwxUrCYYOE3GN8NO7moTktA0b8uzy4Lr");'>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1 px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <a class="flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined">
+                            arrow_back
+                        </span>
+                        <span>Back to News</span>
+                    </a>
+                </div>
+                <article>
+                    <div class="w-full h-96 rounded-xl bg-cover bg-center mb-8 shadow-lg"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDsfjsHiDpjHky7iMK01tXpN62gmJB9vSjN5ezny4vp1dvoGXz7ogHeSJN_f8S_47JMnxPTexNOTwJQY0NoS7LCXfumR7wQNcscB3sowGxssRVeeapcGhfGfWYCaum8mSZdrzFGvq4Q9H-h1xPngoDkxH-KHNuy4Hgh6_E04Zq6i3ey9XuvojEjY7n6WP4CQaj3rw9LgEJici3IxAtlIoKIPS9vyj2-eDxuxivY1d5cpGFK3uA0vgrNfB_25MfSwsoH9IILiWgWHtX");'>
+                    </div>
+                    <header class="mb-8">
+                        <h1
+                            class="text-4xl lg:text-5xl font-extrabold tracking-tighter text-gray-900 dark:text-white mb-4">
+                            Severe Thunderstorms Expected Across the Midwest
+                        </h1>
+                        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                            <span>By Amelia Stone</span>
+                            <span class="mx-2">·</span>
+                            <span>Published 2 days ago</span>
+                        </div>
+                    </header>
+                    <div
+                        class="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 font-normal leading-relaxed">
+                        <p>
+                            The National Weather Service has issued severe thunderstorm warnings for several states in
+                            the Midwest, including Illinois, Indiana, and Ohio. Residents are advised to take
+                            precautions and stay informed about the latest weather updates. The storms are expected to
+                            bring heavy rain, strong winds, and the possibility of tornadoes.
+                        </p>
+                        <p>
+                            Emergency services are on standby to respond to any incidents. Please ensure you have a
+                            safety plan in place and monitor local news for further instructions.
+                        </p>
+                    </div>
+                    <footer
+                        class="mt-12 pt-8 border-t border-gray-200/50 dark:border-gray-700/50 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors shadow-sm border border-gray-200/80 dark:border-gray-700/80">
+                                <span class="material-symbols-outlined text-lg">
+                                    ios_share
+                                </span>
+                                Share
+                            </button>
+                        </div>
+                        <a class="inline-flex items-center justify-center rounded-lg px-5 py-3 text-base font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-background-dark shadow-md"
+                            href="#">
+                            Back to News
+                        </a>
+                    </footer>
+                </article>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>

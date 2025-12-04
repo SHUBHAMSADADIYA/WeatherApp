@@ -1,0 +1,17 @@
+<div class="flex items-center gap-3 text-white">
+    <div class="size-6 text-white">
+        <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
+                fill="currentColor"></path>
+        </svg>
+    </div>
+    <h2 class="text-white text-xl font-bold">WeatherWise</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+    <a class="text-white/60 hover:text-white text-sm font-medium" href="{% url 'homepage' %}">Today</a>
+    <a class="text-white/60 hover:text-white text-sm font-medium" href="{% url 'hourly' %}">Hourly</a>
+    <a class="text-white/60 hover:text-white text-sm font-medium" href="{% url 'tenDaysDetail' %}">10-day</a>
+    <a class="text-white/60 hover:text-white text-sm font-medium" href="#">Map</a>
+    <a class="text-white/60 hover:text-white text-sm font-medium" href="{% url 'news' %}">News</a>
+</nav>

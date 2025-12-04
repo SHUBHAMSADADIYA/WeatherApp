@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1392ec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101a22",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+</head>
+<body class="bg-black font-display text-white">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-white/10 px-10 py-4">
+<div class="flex items-center gap-8">
+
+{% include 'navbar.html' %}
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-white/40" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+</svg>
+</div>
+<input class="form-input w-40 max-w-xs rounded-lg border-none bg-white/10 py-2 pl-10 pr-4 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search" type="search"/>
+</div>
+<div class="h-10 w-10 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuChntnKCMRp22tezQ9zi3scvvS6-1L4N9CRBzeAJEVI6wOqbKTfikLngGRWc0x6WygnrKkTafeUzvz7W2WMiPy55epg7OzQ5q7Ba9MoCJaaQJOyk3W6owv3IsqDWxeDXWkv60ub_jiBuXFgeZQl1M-RpKo6iUpvXC6J9nERhZ6Rt_GAprajrL7COva_0G3iUT7Cra__4CS9zgcaOVPvMfuhsiqJAPr0C0ggXljBY4vNqfZ3fhg_nqLpNCNIOXfStTBunQuRKwI6sXkZ");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 py-8 sm:px-10 md:px-20 lg:px-40">
+<div class="mx-auto max-w-5xl">
+<div class="relative min-h-[400px] rounded-xl bg-cover bg-center p-6 md:p-10 flex flex-col justify-end text-white shadow-lg" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDC9Yyl0HmcZuuqdMBl1xBXqGBFucmi3soC-1Sc95EMT4F6MxrRHwucFGaE69irOuUdFhU9_HBLaETM63uDspexTMF_eueXvZ_2LEqXQIX525aSh2KkhafqrzVgnTB7EiD38wImRK9fLm-BDLrFBJKuCSs0mqdTD7SjIrEsxQ0Ds3kSIeBV3lcgJ-mJlRoUsqQQAjvsUcHKW1-gjMrkWbc63_HdEb-VamkXExaTs9LFLN4Gqp2VvR1EPZ0KDfhWh8dLy6DCXhCfOzb-");'>
+<div class="flex flex-col gap-2">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">{{ city }}</h1>
+<h2 class="text-lg font-medium text-white/80">{{ condition }}</h2>
+</div>
+<div class="absolute top-6 right-6 rounded-lg bg-white/20 px-4 py-2 text-lg font-bold backdrop-blur-sm">{{ temp_c }}°</div>
+</div>
+<section class="py-8">
+<h2 class="text-2xl font-bold text-white mb-4">Today's weather</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
+    <!-- 12AM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">12AM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqRMzzm5we8HDm7QHDF9XQLviWrtHCMAQNiDU6O_1sLpBY46L_it5uMNbLi1saBcZiwsaXNQQXgKOQnqrbPQjQ4cAp3rz1qnBx-5SYlJCoobmfjWG07m8IVS59J2AZj33clTqxJUDeScrAifeB66nkE3F2nvEtywIADM7WMJafPmOleB50_OFFboKu5yw4TgBIkfiDLxlUlgye7gH7K8V29cZvRLJcTmhk4UhyQPGrm8-eZ5pURtudXqjAIO8Rb6VTrJ-egidXB9ft");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.12AM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 3AM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">3AM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDt-P_9iO834NfMaSJAX3s5_GZxyH-FT613H3u0V0ZUzwzV-Iug9PBZWTw4mA8exRYBxpyFH2HaMALv1fOsbXYZuIcn1VdI1sSFicUY9YuMgbSuoqhu2ASjawb6bs7bmUzoNHOBL32EgAY5WX0HX1dQDBoDgZNcN77UhonO4NQFWqrO7dQ6zS9CLK7s34uXVdmVX6RXYMiUN9ZjYu52aGOzMBAaugt7s3VJIJNaapCOf7UdzoD69RZwSEpVx693FBUZFur-HtTy1rwh");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.3AM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 6AM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">6AM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALGu318Uqk9t2yXUGRz3G2AfKfMmKddiCvmbnjHEg9edkaIiZVchgs6QANJEYn4rfaXsqF86YWfr0bkU7GmvpUF0XD19V1SMfYZGM7VRrGCu2HC9WNL0Bmhgx6aEafGtElUsaY9xckNbEYPGdg0A1Oz1dqcLK0BpsZWHscwibnJdvHaBsf8i-P0i-RCQ0Dlkb2FSdnDjBNZoHonr-cMrCvJGiUjKVFL1Zyzwhn5BB39CZhk1gi5s3Wue31F6lfX-ZkD2kPG4uEGt6g");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.6AM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 9AM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">9AM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQfSwM2Nt4lRwlp__YXIPNBC4Q1U8JawRwOLZLkJgx8u258LDeD3m5i7aRIwQUQ8GnkJwkRZqW0pohqpkpf32ICXxNM4UTjMg0quBt8gyopkzQCAV6FuwHd_u55QWluKQnEP3dMb5vNBRTtbPudrEHawSh6cPeFSOGQcqs09xCbHFZPJ57im4EG6piACqnFv-5g_c_ChiY5AL71HpROYo8iAU_HLFVlWUTyP5-hty8V2BXGTiM7trfeaPhFHiii6sVlga6EWYXeG_-");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.9AM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 12PM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">12PM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDKavcWNx4fAlYnFQDQtoNqB7DguyzNm1BvhaEhP291pk6gF5aVyx_0FWSaQ00HXHwgQ8M5u4N4qy50dRCk1akCqooj8uc8Q2t7JQqwn2uM2LxVKPp__88oQxJSpF4oLJNIFndWsiq5U4ubWZ-xg-Kw-WDf2sT8x-3cRVLaj471oUcAvwfL6LTPAPafOgUZ6gc9dsaydbG_EiUngaCBwmT3oNDtiQnSsgBzd-QHB6dNcFZp0AZm9shbQ7C2UfjSsu5J1-1B9RZiy7LC");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.12PM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 3PM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">3PM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA3I-BJNLwtO1ZRvBJDh9MyCoxQncqxyAWBrGaL9_4hGNnpwXblus933owyaogQSr361mzqZFSi7LU6367vKvPzGzxRoYnRdImCCe0H2gF-ESiXufeyX6YrXmEjhyBjDB_ZL3YhrI6JomW7SRpbOZRggjmnPl1Xg9kKuL11o3ywAqsNViiXNVJUCyzKJXR7fzXpjuzbZsCSfjQU32wqWO-cmNwaBdu6ni_zYnNubAcleTx7gbihKSpbrdQj_iMPePzo__Uq0e6vWlXq");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.3PM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 6PM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">6PM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqRMzzm5we8HDm7QHDF9XQLviWrtHCMAQNiDU6O_1sLpBY46L_it5uMNbLi1saBcZiwsaXNQQXgKOQnqrbPQjQ4cAp3rz1qnBx-5SYlJCoobmfjWG07m8IVS59J2AZj33clTqxJUDeScrAifeB66nkE3F2nvEtywIADM7WMJafPmOleB50_OFFboKu5yw4TgBIkfiDLxlUlgye7gH7K8V29cZvRLJcTmhk4UhyQPGrm8-eZ5pURtudXqjAIO8Rb6VTrJ-egidXB9ft");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.6PM|default:'--' }}°</p>
+    </div>
+    
+    <!-- 9PM -->
+    <div class="flex flex-col items-center gap-3 rounded-lg bg-white/5 p-4">
+        <p class="text-sm font-medium text-white/60">9PM</p>
+        <div class="h-16 w-16 rounded-lg bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDt-P_9iO834NfMaSJAX3s5_GZxyH-FT613H3u0V0ZUzwzV-Iug9PBZWTw4mA8exRYBxpyFH2HaMALv1fOsbXYZuIcn1VdI1sSFicUY9YuMgbSuoqhu2ASjawb6bs7bmUzoNHOBL32EgAY5WX0HX1dQDBoDgZNcN77UhonO4NQFWqrO7dQ6zS9CLK7s34uXVdmVX6RXYMiUN9ZjYu52aGOzMBAaugt7s3VJIJNaapCOf7UdzoD69RZwSEpVx693FBUZFur-HtTy1rwh");'></div>
+        <p class="text-xl font-bold text-white">{{ hourly_temps.9PM|default:'--' }}°</p>
+    </div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</div>
+</body></html>

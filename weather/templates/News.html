@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Weather News</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1392ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        display: ["Newsreader"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="flex flex-col min-h-screen">
+        <header class="border-b border-white/10 dark:border-white/10 px-4 sm:px-6 lg:px-8">
+            <div class="container mx-auto flex h-16 items-center justify-between">
+                <div class="flex items-center gap-6">
+                    {% include 'navbar.html' %}
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden sm:block">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            search </span>
+                        <input
+                            class="h-10 w-full rounded-full border border-white/10 bg-white/5 dark:border-white/10 dark:bg-white/5 pl-10 pr-4 text-sm text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-primary"
+                            placeholder="Search" type="search" />
+                    </div>
+                    <button class="p-2 rounded-full hover:bg-white/10">
+                        <span class="material-symbols-outlined text-gray-600 dark:text-gray-300"> settings </span>
+                    </button>
+                    <img alt="User avatar" class="size-9 rounded-full"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS5ETc0XIUlTgJrwmgWUB2GONYMwtWCYkW9Mehd4InNvgXN4qp35WLAvlfvqD9SdbgNS4u1ZtVjF-6LrtM_RhT546dXf5t6jIORsJ_XWV4dlLJrCt6p0BI61Aar81fSBzjsweh8btDESm9JiZLfCoWtBpxa8_6ov-3RdNpaSLXzYGkk4fXUqWBAm1LRDYE25GV56wc-04davpU1u-NNOvO_GCBJyNc6SzGce7cKnSsBXOQ6O1YZkRt9LxMBmU4o3T_CDgR5X_0Bhgw" />
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">Weather News</h1>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <div class="relative flex-1">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                search </span>
+                            <input
+                                class="h-12 w-full rounded-full border border-white/10 bg-white/5 dark:border-white/10 dark:bg-white/5 pl-12 pr-4 text-base text-gray-900 dark:text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-primary"
+                                placeholder="Search news" type="search" />
+                        </div>
+                        <div class="relative">
+                            <select
+                                class="h-12 w-full sm:w-auto appearance-none rounded-full border border-white/10 bg-white/5 dark:border-white/10 dark:bg-white/5 pl-4 pr-10 text-base text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary">
+                                <option>Sort by Relevance</option>
+                                <option>Sort by Date</option>
+                                <option>Sort by Popularity</option>
+                            </select>
+                            <span
+                                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                expand_more </span>
+                        </div>
+                    </div>
+                    <div class="border-b border-white/10 dark:border-white/10 mb-8">
+                        <div class="flex flex-wrap items-center gap-2 pb-4">
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400 mr-2">Categories:</span>
+                            <button
+                                class="px-3 py-1 text-sm font-medium rounded-full border border-primary text-primary bg-primary/10">All</button>
+                            <button
+                                class="px-3 py-1 text-sm font-medium rounded-full border border-white/20 text-gray-300 hover:bg-white/10 hover:border-white/30 transition-colors">Local
+                                Weather</button>
+                            <button
+                                class="px-3 py-1 text-sm font-medium rounded-full border border-white/20 text-gray-300 hover:bg-white/10 hover:border-white/30 transition-colors">Global
+                                Climate</button>
+                            <button
+                                class="px-3 py-1 text-sm font-medium rounded-full border border-white/20 text-gray-300 hover:bg-white/10 hover:border-white/30 transition-colors">Storm
+                                Alerts</button>
+                            <button
+                                class="px-3 py-1 text-sm font-medium rounded-full border border-white/20 text-gray-300 hover:bg-white/10 hover:border-white/30 transition-colors">Science</button>
+                        </div>
+                    </div>
+                    <div class="space-y-12">
+                        <article class="group grid md:grid-cols-3 gap-6 items-start">
+                            <div class="md:col-span-1">
+                                <img alt="Stormy coast" class="w-full h-auto object-cover rounded-lg aspect-video"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4u_IKjzbgcZsq1qpsdnx90v9PjEcBJ-O_kZLMzdx6sWcrxMHcJpH0LW5uTTOEuWxnH9wmz5ZiB3I67AO-f5heHT_9bhMU58o4NA9NYSIDjPtiQvqMho7I6CJ6zy5HFCLRAn_ou4_Qb4i9K3bbMUOFXjMgj4cpIao3aTN01A3kxIFum6UbFcO5EVcolXClRNMEhD4tsOkY09QHM3C2_-LE092ECYwEatp9s-3ucaTYStyjLlzHyQ4LteGIbXUKMIHpG5bu13N7-f7A" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Published on: March 15, 2024
+                                </p>
+                                <h2
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    <a href="#">Severe Storms Expected to Hit Coastal Regions</a>
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                                    Coastal areas are bracing for a series of severe storms, with potential for flooding
+                                    and high winds. Residents are advised to take necessary precautions.
+                                </p>
+                                <a class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                                    href="#">Read More
+                                    <span class="material-symbols-outlined ml-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="group grid md:grid-cols-3 gap-6 items-start">
+                            <div class="md:col-span-1">
+                                <img alt="Arctic ice" class="w-full h-auto object-cover rounded-lg aspect-video"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOtzu5SyJyNdHitYcUdmQ2uPRcuK1KjaEHQBgWdbk0CtVi10tv61bSxvxNMsGDKrh5iFSa5Ln3JiBFVV_qm7wqBSgMJA0gBGBdH686wxzN5dsgXTySentlacYrXui1HiP2xhIN8zZLnmyvmVJloNE53gFzuQ1-jNc62P-fuhp1SePB2hVsvx3oUEWlDMpyoYbLzmIT_91liRCO4rMGYxAEbyl_n2Ode3hi0y4Ejph3TOrGo5bzJvVq8DOmJoqugrpdwZyxknMUELYV" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Published on: March 14, 2024
+                                </p>
+                                <h2
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    <a href="#">Climate Change Impact on Arctic Ice</a>
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                                    A new study reveals the alarming rate at which Arctic ice is melting, highlighting
+                                    the urgent need for global action on climate change.
+                                </p>
+                                <a class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                                    href="#">Read More
+                                    <span class="material-symbols-outlined ml-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="group grid md:grid-cols-3 gap-6 items-start">
+                            <div class="md:col-span-1">
+                                <img alt="Weather satellite" class="w-full h-auto object-cover rounded-lg aspect-video"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAawr_lJO1kqorDGH-KnEJGQVjoJU39nCptz4yWsv8H1RCMTjWebG6EOSRRB-4odjsW5vfVrCbSjvlvg0g-qL57z77txiPXJVb489gZwSNKkhVPovuHwXAG9vDrNwig4RtpdqyDflhG9AKg_dpwo9kUj1RICID6OkIOPCiUK9G1PLvVH4S3y1HfC_rYrMfIUZo2OeK6ZTgIjSzjDSXP6CmjzFr4zCQ9q4gnUMvsXBL0HpUXYBJ7LXyqJJndBQXlHUSG6KtDoxRc3-nZ" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Published on: March 13, 2024
+                                </p>
+                                <h2
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    <a href="#">Breakthrough in Weather Forecasting Technology</a>
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                                    Scientists have developed a new weather forecasting model that promises to provide
+                                    more accurate and long-range predictions.
+                                </p>
+                                <a class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                                    href="#">Read More
+                                    <span class="material-symbols-outlined ml-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                        <article class="group grid md:grid-cols-3 gap-6 items-start">
+                            <div class="md:col-span-1">
+                                <img alt="Cityscape" class="w-full h-auto object-cover rounded-lg aspect-video"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgLsYm0-1Ft_dFRjcpD1VotjN5vLhEyhbSGkXBn-GfBlhhG7WPHUAH6_y53FbrI3Po51m_kfCSpdpJnj2rUwuf_ne8LZw_zWVUxq53A9icHd9HFMwge-XcPm4dX1aCjio1brKNJtlfoWsEqRPX1mW6uFXadgEpw3vfzIWBNoBFKaSFrP_-1oqGoioGDDMVPsBSv81E6JgvLF-zMbCPafCsm6Rnyiv-GGqRHe8sYa9_a9LUJEdhSbe-cXdotP63Fjiynq3AQOdq_5tA" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Published on: March 12, 2024
+                                </p>
+                                <h2
+                                    class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors">
+                                    <a href="#">Urban Heat Islands: A Growing Concern</a>
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                                    Urban areas are experiencing increased temperatures due to the urban heat island
+                                    effect, posing health risks to city dwellers.
+                                </p>
+                                <a class="inline-flex items-center text-sm font-medium text-primary hover:underline"
+                                    href="#">Read More
+                                    <span class="material-symbols-outlined ml-1">arrow_forward</span>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <nav aria-label="Pagination" class="flex items-center justify-center mt-12">
+                        <a class="relative inline-flex items-center rounded-l-lg border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-2 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-primary/20 dark:hover:bg-primary/30"
+                            href="#">
+                            <span class="sr-only">Previous</span>
+                            <span class="material-symbols-outlined text-base">chevron_left</span>
+                        </a>
+                        <a aria-current="page"
+                            class="relative z-10 inline-flex items-center border border-primary bg-primary px-4 py-2 text-sm font-medium text-white"
+                            href="#">1</a>
+                        <a class="relative inline-flex items-center border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-primary/20 dark:hover:bg-primary/30"
+                            href="#">2</a>
+                        <a class="relative hidden items-center border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-primary/20 dark:hover:bg-primary/30 md:inline-flex"
+                            href="#">3</a>
+                        <span
+                            class="relative inline-flex items-center border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300">...</span>
+                        <a class="relative hidden items-center border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-primary/20 dark:hover:bg-primary/30 md:inline-flex"
+                            href="#">8</a>
+                        <a class="relative inline-flex items-center rounded-r-lg border border-white/10 dark:border-white/10 bg-white/5 dark:bg-white/5 px-2 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-primary/20 dark:hover:bg-primary/30"
+                            href="#">
+                            <span class="sr-only">Next</span>
+                            <span class="material-symbols-outlined text-base">chevron_right</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
